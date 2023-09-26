@@ -32,3 +32,24 @@ var_dump($user);
 
 // Pour afficher le nom de l'utilisateur
 echo "Bienvenue, " . $user['name'];
+
+// Opérateurs sur les tableaux
+//       0, 1, 2
+$tab1 = [1, 2, 3];
+//       0, 1, 2, 3
+$tab2 = [4, 5, 6, 7];
+
+$tab3 = $tab1 + $tab2;
+
+var_dump($tab3);
+
+// Array destructuring
+// On reprend $ta1 déclaré juste au-dessus
+[$one, $two] = $tab1;
+
+var_dump($one, $two);
+
+// [2 => $three] = $tab1;
+[,,$three] = $tab1;
+
+var_dump($three);

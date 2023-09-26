@@ -61,9 +61,15 @@ var_dump($notesCopy);
 $notesCopy[] = 20;
 var_dump($notesCopy, $notes);
 
-$notes = [...$notes, 3];
+$notesNew = [...$notes, 3];
 
 var_dump($notes);
 
 $spreadFusion = [...$tab1, ...$tab2];
 var_dump($spreadFusion);
+
+// Je veux mes notes dans l'ordre descendant
+$notesTemp = [...$notes];
+sort($notesTemp);
+$descendingNotes = array_reverse($notesTemp);
+var_dump($descendingNotes);

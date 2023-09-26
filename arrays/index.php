@@ -53,3 +53,17 @@ var_dump($one, $two);
 [,,$three] = $tab1;
 
 var_dump($three);
+
+// Spread operator
+$notesCopy = [...$notes];
+var_dump($notesCopy);
+
+$notesCopy[] = 20;
+var_dump($notesCopy, $notes);
+
+$notes = [...$notes, 3];
+
+var_dump($notes);
+
+$spreadFusion = [...$tab1, ...$tab2];
+var_dump($spreadFusion);

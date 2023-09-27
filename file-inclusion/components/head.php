@@ -20,3 +20,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 </head>
 <body>
+
+<header>
+  <?php require_once 'nav.php'; ?>
+</header>

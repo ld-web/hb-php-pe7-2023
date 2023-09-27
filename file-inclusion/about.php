@@ -3,7 +3,7 @@ $title = "À propos";
 require_once 'components/head.php';
 ?>
 
-<main class="prose prose-lg mx-auto">
+<main class="prose prose-lg mx-auto pt-24">
   <h1>À propos</h1>
   
   <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id nobis iste aliquam est impedit minus, totam pariatur aut optio deleniti consequuntur quasi itaque! Esse repellendus officia excepturi voluptas aliquid dignissimos!</p>

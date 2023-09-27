@@ -4,7 +4,7 @@ require_once 'data/products.php'; // DATA
 require_once 'components/head.php'; // LAYOUT
 ?>
 
-<main class="prose prose-lg mx-auto">
+<main class="prose prose-lg mx-auto pt-24">
   <h1>Produits</h1>
   <h2><?php echo count($products); ?> produits trouvés</h2>
 

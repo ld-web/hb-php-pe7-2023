@@ -25,3 +25,37 @@
 - Ajout d'un élément au début du tableau (`array_unshift`), à la fin du tableau (`$tab[] = "element"`)
 - Fonction de la SPL `count` pour compter les éléments d'un tableau
 - Tableaux associatifs : définition de clés/index personnalisés, association à une valeur avec `=>`
+- Array destructuring : extraction de valeurs contenues dans un tableau, directement dans des variables
+- Spread operator : pour propager les éléments d'un tableau au sein d'un autre tableau (utile pour une copie par exemple)
+- Fonctions sur les tableaux : utilisation de quelques fonctions de la SPL, différence entre style impératif & déclaratif
+
+[boucles](arrays/loops.php) :
+
+- Exploration des 4 types de boucles en PHP :
+  - `while`
+  - `for`
+  - `do...while`
+  - `foreach` : avec foreach, 2 syntaxes :
+    - `foreach ($tab as $value)`
+    - `foreach ($tab as $key => $value)`
+
+[Atelier tableau de produits multidimensionnel](arrays/multidimensional.php) :
+
+- Définition d'un tableau multidimensionnel : un tableau de tableaux
+- Les sous-tableaux représentent chaque produit, et sont indexés sur les propriétés d'un produit
+- Utilisation de TailwindCSS en mode CDN (déconseillé sur des vrais projets, utiliser NPM + un bundler comme [Webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/), [Rollup](https://rollupjs.org/) par exemple)
+- Avec une boucle `foreach`, on itère sur chaque élément du tableau : chaque produit. Chaque produit étant lui-même un tableau associatif, on peut accéder à ses propriétés via les index/clés correspondant(e)s
+
+## Inclusion de fichiers
+
+Reprise de l'atelier liste de produits, et séparation dans [un fichier de data](file-inclusion/data/products.php) : séparation des responsabilités, le fichier de data définit la donnée, la page d'index affiche la donnée. On peut alors importer (`require_once`) le fichier de data dans l'index pour en afficher le contenu.
+
+Ensuite, création de [composants](file-inclusion/components/) pour séparer l'affichage en différentes parties.
+
+Ajout d'une [navbar](file-inclusion/components/nav.php) que l'on inclut directement dans le [head](file-inclusion/components/head.php) de l'application.
+
+Enfin, [découverte de la constante `__DIR__`](https://github.com/ld-web/hb-php-pe7-2023/commit/979191b459afc517fef30027654386b933f149cc#diff-4a5469266895af726b0632525db30d22eb12e3752d278e9588d241a376106bfbR25) pour désigner le répertoire courant. Cela nous aide à construire des chemins plus robustes, et qui ne dépendent pas du script en cours d'exécution.
+
+## Superglobales
+
+Découverte de la variable superglobale [`$_GET`](https://github.com/ld-web/hb-php-pe7-2023/commit/10d9e3e7360a113f6d2f06beca6d7b10683da2ee#diff-726a4e253257ed88e966a23e57153924cf3a42e3e9b17ded7742ed0301826b76R6) pour récupérer les paramètres inscrits dans l'URL.

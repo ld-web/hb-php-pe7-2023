@@ -5,6 +5,7 @@
   <p class="m-0">
     <?php echo $product['price']; ?>€
   </p>
+  <a href="products/item.php">Voir le produit</a>
   <?php if ($product['discount']) { ?>
     <div>
       <span class="text-sm bg-green-500 text-white px-3 py-1">

@@ -218,4 +218,11 @@ $products = [
     'weight'   => 22,
     'discount' => false
   ],
+  [
+    'id'       => 32,
+    'name'     => 'honor',
+    'price'    => 88,
+    'weight'   => 22,
+    'discount' => true
+  ],
 ];

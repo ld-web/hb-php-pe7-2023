@@ -19,7 +19,7 @@ if (!isset($_GET['size']) || !is_numeric($_GET['size'])) {
     exit;
 }
 
-$size = (int) $_GET['size'];
+$size = intval($_GET['size']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

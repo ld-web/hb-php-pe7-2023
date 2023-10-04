@@ -58,14 +58,13 @@ $member = $members[$memberKey];
   foreach ($member['abilities'] as $abilityId) {
       $ability = findAbility($abilities, $abilityId);
       ?>
-    <div class="bg-cyan-600 text-white px-2 py-1">
+    <div class="bg-[<?php echo $ability['bgColor']; ?>] text-white px-2 py-1">
       <?php echo strtoupper($ability['name']); ?>
     </div>
       <?php
   }
 ?>
   </div>
-  
 </main>
 
 <?php require_once 'layout/footer.php';

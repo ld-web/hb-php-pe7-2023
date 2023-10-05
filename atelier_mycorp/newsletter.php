@@ -3,13 +3,13 @@ require_once 'layout/header.php';
 require_once 'functions.php';
 
 if (isset($_POST['email'])) {
-  $email = $_POST['email'];
+    $email = $_POST['email'];
 
-  $filePath = __DIR__ . '/emails.txt';
-  $emailsFile = fopen($filePath, 'a');
-  fwrite($emailsFile, $email . PHP_EOL);
-  fclose($emailsFile);
-  redirect('subscription_confirm.php?email=' . $email);
+    $filePath = __DIR__ . '/emails.txt';
+    $emailsFile = fopen($filePath, 'a');
+    fwrite($emailsFile, $email . PHP_EOL);
+    fclose($emailsFile);
+    redirect('subscription_confirm.php?email=' . $email);
 }
 ?>
 

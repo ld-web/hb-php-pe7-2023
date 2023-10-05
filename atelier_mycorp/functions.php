@@ -34,6 +34,6 @@ function findAbility(array $abilities, int $id): ?array
 
 function redirect(string $location): void
 {
-  header('Location: ' . $location);
-  exit;
+    header('Location: ' . $location);
+    exit;
 }

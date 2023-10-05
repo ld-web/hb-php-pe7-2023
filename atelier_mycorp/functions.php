@@ -31,3 +31,9 @@ function findAbility(array $abilities, int $id): ?array
 
     return $ability;
 }
+
+function redirect(string $location): void
+{
+  header('Location: ' . $location);
+  exit;
+}

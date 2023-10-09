@@ -59,3 +59,16 @@ Enfin, [découverte de la constante `__DIR__`](https://github.com/ld-web/hb-php-
 ## Superglobales
 
 Découverte de la variable superglobale [`$_GET`](https://github.com/ld-web/hb-php-pe7-2023/commit/10d9e3e7360a113f6d2f06beca6d7b10683da2ee#diff-726a4e253257ed88e966a23e57153924cf3a42e3e9b17ded7742ed0301826b76R6) pour récupérer les paramètres inscrits dans l'URL.
+
+## Fonctions
+
+Écriture de plusieurs fonctions :
+
+- [minInt](functions/minInt.php) : Plus petit nombre parmi 3
+- [factorial](functions/factorial.php) : Factorielle d'un nombre
+- [getIntPart](functions/getIntPart.php) : Récupérer la partie entière d'un nombre passé en paramètre
+- [getDigitsSum](functions/getDigitsSum.php) : Calculer la somme des chiffres composant un nombre. Dans cette fonction, on réutilise la méthode `getIntPart` définie préalablement. On peut alors `require_once` le fichier qui contient sa définition, afin de pouvoir l'utiliser dans `getDigitsSum`
+- [apply_html](functions/apply_html.php) : Application d'une balise HTML sur un texte donné. Définition de constantes afin de définir des codes (valeurs entières) et leur donner une signification dans le code source. On peut alors manipuler des constantes comme `BOLD` ou `ITALIC` sans avoir à retenir la valeur entière associée
+- [fillArray](function_fillArray/) : Définition d'une fonction dans un fichier séparé [functions.php](function_fillArray/functions.php), puis `require_once` dans [l'index](function_fillArray/index.php). Petite combinaison avec le chapitre sur les superglobales : on passe en paramètre GET le nombre d'éléments qu'on souhaite puis on génère dynamiquement un tableau en fonction de ce paramètre GET
+- [Fonctions anonymes, arrow function](functions/anonymous_arrow_fn.php)
+- [Argument unpacking](functions/argument_unpacking.php)

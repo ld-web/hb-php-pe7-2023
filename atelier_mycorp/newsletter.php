@@ -1,51 +1,6 @@
 <?php
 require_once 'layout/header.php';
-require_once 'functions.php';
-
-$error = false;
 $email = "";
-if (isset($_POST['email'])) {
-    $email = $_POST['email'];
-    $errorMsg = "";
-    $emailsFilePath = __DIR__ . '/emails.txt';
-    $spamDomainsFilePath = __DIR__ . '/spam_domains.txt';
-    // S'assurer que l'email n'est pas vide
-    if (empty($email)) {
-        $error = true;
-        $errorMsg = "L'email est obligatoire";
-    }
-    // Valider le format de l'adresse email
-    // !$error est équivalent à $error === false
-    // Donc il signifie ici "s'il n'y a pas d'erreur"
-    if (!$error && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-        $error = true;
-        $errorMsg = "Le format de l'email est incorrect";
-    }
-
-    // Éviter les doublons
-    $emails = file($emailsFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    if (!$error && in_array($email, $emails)) {
-        $error = true;
-        $errorMsg = "L'email existe déjà dans la newsletter";
-    }
-
-    // Vérifier que le domaine n'est pas un spam
-    if (!$error) {
-        $emailDomain = ltrim(strstr($email, '@'), '@');
-        $spamDomains = file($spamDomainsFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        if (in_array($emailDomain, $spamDomains)) {
-            $error = true;
-            $errorMsg = "Désolé, cet email n'est pas accepté dans notre newsletter";
-        }
-    }
-
-    if (!$error) {
-        $emailsFile = fopen($emailsFilePath, 'a');
-        fwrite($emailsFile, $email . PHP_EOL);
-        fclose($emailsFile);
-        redirect('subscription_confirm.php?email=' . $email);
-    }
-}
 ?>
 
 <section>
@@ -56,14 +11,14 @@ if (isset($_POST['email'])) {
         <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
             Rejoignez les XXX inscrits à la newsletter
         </p>
-        <?php if ($error) { ?>
+        <?php if (isset($_GET['error'])) { ?>
             <div class="mb-3">
                 <span class="text-red-500 bg-red-100 py-1 px-2">
-                    <?php echo $errorMsg; ?>
+                    <?php echo $_GET['error']; ?>
                 </span>
             </div>
         <?php } ?>
-        <form class="w-full max-w-md mx-auto" method="POST">
+        <form action="newsletter_process.php" class="w-full max-w-md mx-auto" method="POST">
             <label for="default-email" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Email
                 sign-up</label>
             <div class="relative">

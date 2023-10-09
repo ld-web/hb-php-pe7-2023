@@ -146,3 +146,5 @@ En cas d'erreur durant le traitement, on redirige vers la page du formulaire, [n
 Définition de fonctions & constantes dans un fichier [functions/newsletter.php](atelier_mycorp/functions/newsletter.php). Les constantes servent à définir les différents types d'erreurs qu'on peut rencontrer. On peut ensuite leur associer un message d'erreur avec une fonction `getErrorMessage`.
 
 Dans le même fichier, on continue notre décomposition avec 2 fonctions supplémentaires : `registerEmail` et `getTotalEmails`, chargées respectivement d'enregistrer un nouvel email au sein du fichier, et de compter le nombre d'emails présents dans le fichier.
+
+![Newsletter form process](atelier_mycorp/docs/newsletter_form_process.png "Newsletter form process")

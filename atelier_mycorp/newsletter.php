@@ -15,6 +15,8 @@ if (isset($_POST['email'])) {
         $errorMsg = "L'email est obligatoire";
     }
     // Valider le format de l'adresse email
+    // !$error est équivalent à $error === false
+    // Donc il signifie ici "s'il n'y a pas d'erreur"
     if (!$error && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         $error = true;
         $errorMsg = "Le format de l'email est incorrect";

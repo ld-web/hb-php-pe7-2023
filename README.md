@@ -72,3 +72,61 @@ Découverte de la variable superglobale [`$_GET`](https://github.com/ld-web/hb-p
 - [fillArray](function_fillArray/) : Définition d'une fonction dans un fichier séparé [functions.php](function_fillArray/functions.php), puis `require_once` dans [l'index](function_fillArray/index.php). Petite combinaison avec le chapitre sur les superglobales : on passe en paramètre GET le nombre d'éléments qu'on souhaite puis on génère dynamiquement un tableau en fonction de ce paramètre GET
 - [Fonctions anonymes, arrow function](functions/anonymous_arrow_fn.php)
 - [Argument unpacking](functions/argument_unpacking.php)
+
+## Atelier MyCorp
+
+L'atelier MyCorp démarre de la façon suivante :
+
+Vous allez démarrer un nouveau projet présentant votre entreprise :
+
+- Créez une page d'accueil présentant les membres de votre entreprise
+- La page d'accueil sera une liste des membres, chargée depuis un tableau PHP
+- Pour un membre, on retrouvera les informations suivantes :
+  - name
+  - firstname
+  - birthDate (format string "JJ/MM/AAAA")
+  - abilities : tableau de compétences, par exemple "dev", "backend", "frontend", "dba", "devops", "sysadmin", etc...s'il s'agit d'une entreprise de dev
+  - quote : une citation préférée, format string
+  - picture : une URL vers une image de portrait (sur le web, chemin absolu)
+
+Chaque membre sur la page d'accueil sera cliquable pour accéder à une seconde page "member.php" affichant un membre de l'entreprise en particulier.
+
+Sur la page de membre, reprenez la solution avec foreach utilisée lors de l'atelier sur les produits. Chercher ensuite comment réécrire cette fonctionnalité de manière fonctionnelle (avec des fonctions de la SPL)
+
+[Atelier MyCorp](atelier_mycorp/) :
+
+- Définition des données : deux fichiers [abilities](atelier_mycorp/data/abilities.php) et [members](atelier_mycorp/data/members.php), avec inclusion d'une propriété `id` pour simuler une clé primaire. Nous pouvons alors référencer des compétences depuis le tableau de membres (le tableau `abilities` dans chaque membre ne contient que des valeurs entières, références des ID du tableau `abilities`)
+- Sur [l'index](atelier_mycorp/index.php), boucle sur les `$members` issus des datas, et définition d'un template que l'on `require` autant de fois qu'on a de membres dans le tableau
+- Définition d'une fonction [`getFullName`](atelier_mycorp/functions.php), utilisée à la fois dans la liste sur [l'index], mais également sur la [page de membre](atelier_mycorp/member.php). L'intérêt est ici de montrer les possibilités d'évolution : on ajoute un paramètre pour l'ordre d'affichage (soit le nom en premier, soit le prénom en premier). On réutilise alors des constantes pour définir des codes qui pilotent l'ordre d'affichage
+- Au niveau du layout, définition d'un header, d'une nav et d'un footer
+- Ajout de couleurs aux compétences afin d'afficher des petits badges avec des couleurs d'arrière-plan différentes
+- Création d'une méthode [`findAbility`](atelier_mycorp/functions.php) pour trouver une compétence à partir de son ID
+
+## Formulaires
+
+[Fausse authentification](forms/) : Introduction aux formulaires avec un formulaire d'authentification (non fonctionnel) en méthode POST
+
+## Suite atelier MyCorp, formulaire newsletter
+
+Dans l'atelier MyCorp, création d'un formulaire de newsletter. Énoncé :
+
+- Ajouter un formulaire d'inscription à la newsletter
+- Ce formulaire peut se trouver sur une page à part entière ou bien dans le layout
+- L'idée sera donc que n'importe quel utilisateur peut s'inscrire en renseignant son email
+- L'email reçu par la cible du formulaire devra donc être enregistré dans un fichier texte
+- Ce fichier texte se trouvera sur le serveur, à la racine du projet
+- Dans la cible du formulaire, on s'assurera que l'email est au bon format, et qu'il n'est pas déjà enregistré dans le fichier texte
+- Ajouter une vérification supplémentaire : que le domaine de l'email ne fasse pas partie d'un ensemble (tableau) de domaines considérés comme des spams
+
+Création de la page [newsletter.php](https://github.com/ld-web/hb-php-pe7-2023/blob/newsletter-00/atelier_mycorp/newsletter.php) présentant un formulaire d'inscription à la newsletter, et intégrant le traitement complet de ce formulaire. À ce stade, nous n'ajoutons pas de cible au formulaire pour que le même fichier se charge de l'affichage et du traitement du formulaire. Sur la branche `newsletter-00`.
+
+Pour la validation, découverte des fonctions de la SPL disponibles :
+
+- `empty` pour vérifier si une variable est vide
+- `filter_var` pour vérifier le format d'un email
+
+Pour les interactions avec un fichier, découverte des fonctions de la SPL :
+
+- `file` pour lire un fichier et charger son contenu dans un tableau
+- `fopen`, `fwrite`, `fclose` pour ouvrir un fichier, écrire dedans puis le refermer
+- Pour isoler le domaine d'un email, afin de vérifier s'il s'agit d'un spam, utilisation des fonctions `strstr` et `ltrim`

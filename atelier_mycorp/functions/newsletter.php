@@ -5,7 +5,7 @@ const EMAIL_INVALID   = 2;
 const EMAIL_DUPLICATE = 3;
 const EMAIL_SPAM      = 4;
 
-function getErrorMessage(int $errorCode, string $locale): string
+function getErrorMessage(int $errorCode): string
 {
     return match ($errorCode) {
         EMAIL_EMPTY => "L'email est obligatoire",

@@ -27,20 +27,20 @@ if (empty($email)) {
 
 // Valider le format de l'adresse email
 if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-    redirect("newsletter.php?error=Le format de l'email est incorrect");
+    redirect("newsletter.php?error=Le format de l'email est incorrect&email=$email");
 }
 
 // Éviter les doublons
 $emails = file($emailsFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 if (in_array($email, $emails)) {
-    redirect("newsletter.php?error=L'email existe déjà dans la newsletter");
+    redirect("newsletter.php?error=L'email existe déjà dans la newsletter&email=$email");
 }
 
 // Vérifier que le domaine n'est pas un spam
 $emailDomain = ltrim(strstr($email, '@'), '@');
 $spamDomains = file($spamDomainsFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 if (in_array($emailDomain, $spamDomains)) {
-    redirect("newsletter.php?error=Désolé, cet email n'est pas accepté dans notre newsletter");
+    redirect("newsletter.php?error=Désolé, cet email n'est pas accepté dans notre newsletter&email=$email");
 }
 
 $emailsFile = fopen($emailsFilePath, 'a');

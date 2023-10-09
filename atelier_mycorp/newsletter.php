@@ -1,6 +1,8 @@
 <?php
 require_once 'layout/header.php';
-$email = "";
+
+// $email = isset($_GET['email']) ? $_GET['email'] : "";
+$email = $_GET['email'] ?? "";
 ?>
 
 <section>

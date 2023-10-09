@@ -23,6 +23,12 @@ function registerEmail(string $emailsFilePath, string $email): void
     fclose($emailsFile);
 }
 
+function getTotalEmails(): int
+{
+    $emails = file(__DIR__ . '/../emails.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    return count($emails);
+}
+
 // Florian
 
 // const ERROR_MESSAGES = [

@@ -12,7 +12,7 @@ $email = $_GET['email'] ?? "";
             class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             Restez connectés !</h1>
         <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
-            Rejoignez les XXX inscrits à la newsletter
+            Rejoignez les <?php echo getTotalEmails(); ?> inscrits à la newsletter
         </p>
         <?php if (isset($_GET['error'])) { ?>
             <div class="mb-3">

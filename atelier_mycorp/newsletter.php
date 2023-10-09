@@ -1,5 +1,6 @@
 <?php
 require_once 'layout/header.php';
+require_once 'functions/newsletter.php';
 
 // $email = isset($_GET['email']) ? $_GET['email'] : "";
 $email = $_GET['email'] ?? "";
@@ -16,7 +17,7 @@ $email = $_GET['email'] ?? "";
         <?php if (isset($_GET['error'])) { ?>
             <div class="mb-3">
                 <span class="text-red-500 bg-red-100 py-1 px-2">
-                    <?php echo $_GET['error']; ?>
+                    <?php echo getErrorMessage(intval($_GET['error'])); ?>
                 </span>
             </div>
         <?php } ?>

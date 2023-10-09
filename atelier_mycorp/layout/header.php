@@ -8,5 +8,7 @@
 </head>
 <body>
   <header>
-    <?php require_once __DIR__ . '/nav.php'; ?>
+    <?php
+    require_once __DIR__ . '/nav.php';
+    ?>
   </header>

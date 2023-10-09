@@ -44,7 +44,5 @@ if (in_array($emailDomain, $spamDomains)) {
     redirect("newsletter.php?error=" . EMAIL_SPAM . "&email=$email");
 }
 
-$emailsFile = fopen($emailsFilePath, 'a');
-fwrite($emailsFile, $email . PHP_EOL);
-fclose($emailsFile);
+registerEmail($emailsFilePath, $email);
 redirect('subscription_confirm.php?email=' . $email);

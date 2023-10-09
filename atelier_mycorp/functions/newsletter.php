@@ -16,6 +16,13 @@ function getErrorMessage(int $errorCode, string $locale): string
     };
 }
 
+function registerEmail(string $emailsFilePath, string $email): void
+{
+    $emailsFile = fopen($emailsFilePath, 'a');
+    fwrite($emailsFile, $email . PHP_EOL);
+    fclose($emailsFile);
+}
+
 // Florian
 
 // const ERROR_MESSAGES = [

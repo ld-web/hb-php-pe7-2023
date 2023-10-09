@@ -130,3 +130,19 @@ Pour les interactions avec un fichier, découverte des fonctions de la SPL :
 - `file` pour lire un fichier et charger son contenu dans un tableau
 - `fopen`, `fwrite`, `fclose` pour ouvrir un fichier, écrire dedans puis le refermer
 - Pour isoler le domaine d'un email, afin de vérifier s'il s'agit d'un spam, utilisation des fonctions `strstr` et `ltrim`
+
+## Atelier MyCorp : décomposition
+
+Dans la branche [newsletter-01](https://github.com/ld-web/hb-php-pe7-2023/tree/newsletter-01), fusionnée ensuite dans la branche main.
+
+- Déplacer la cible du formulaire dans un autre fichier
+- Trouver un moyen de passer les messages d'erreur d'un fichier à un autre. En l'occurence, si une erreur survient, comment revenir au fichier `newsletter.php` en lui transmettant la raison pour laquelle on revient
+- Réfléchir à un moyen de séparer notre code dans différents fichiers : ces fichiers seront probablement à `require_once` par exemple. Également, pourrait-on créer des fonctions qui nous serviraient à valider notre email ?
+
+On déplace la cible du formulaire dans un fichier [newsletter_process.php](atelier_mycorp/newsletter_process.php). Ce fichier devient alors responsable du traitement des données du formulaire.
+
+En cas d'erreur durant le traitement, on redirige vers la page du formulaire, [newsletter.php](atelier_mycorp/newsletter.php), avec un paramètre `GET` décrivant l'erreur et un paramètre `GET` pour l'email qui a été renseigné.
+
+Définition de fonctions & constantes dans un fichier [functions/newsletter.php](atelier_mycorp/functions/newsletter.php). Les constantes servent à définir les différents types d'erreurs qu'on peut rencontrer. On peut ensuite leur associer un message d'erreur avec une fonction `getErrorMessage`.
+
+Dans le même fichier, on continue notre décomposition avec 2 fonctions supplémentaires : `registerEmail` et `getTotalEmails`, chargées respectivement d'enregistrer un nouvel email au sein du fichier, et de compter le nombre d'emails présents dans le fichier.

@@ -6,6 +6,10 @@ if (!isset($_GET['q'])) {
 }
 
 ['q' => $search] = $_GET;
+$abilityId = isset($_GET['skill']) ? intval($_GET['skill']) : null;
+if ($abilityId === 0) {
+    $abilityId = null;
+}
 
 require_once 'layout/header.php';
 require_once 'data/members.php';
@@ -24,7 +28,7 @@ require_once 'functions/member.php';
     //     }
     // }
 
-    $results = findMembers($members, $search);
+    $results = findMembers($members, $search, $abilityId);
 
 foreach ($results as $member) {
     require 'templates/member-card.php';

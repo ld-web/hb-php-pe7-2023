@@ -1,5 +1,14 @@
+<?php require_once __DIR__ . '/../data/abilities.php'; ?>
 
-<form class="grow max-w-[400px]" method="GET" action="search.php">
+<form class="grow max-w-[600px] flex" method="GET" action="search.php">
+    <select id="countries" class="max-w-[150px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="skill">
+        <option value="0" selected>Compétence...</option>
+        <?php foreach ($abilities as $ability) { ?>
+        <option value="<?php echo $ability['id']; ?>">
+            <?php echo $ability['name']; ?>
+        </option>
+        <?php } ?>
+    </select>
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">

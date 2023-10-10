@@ -10,7 +10,7 @@ require_once 'data/members.php';
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <?php foreach ($members as $member) {
-        require 'templates/product-item-card.php';
+        require 'templates/member-card.php';
     } ?>
   </div>
 </main>

@@ -25,4 +25,17 @@ var_dump($otherProduct);
 // Accéder à la valeur qui se trouve dans la propriété discount de mon instance $product
 // var_dump($product->discount);
 var_dump($product);
-echo $product->getName();
+// echo $product->getName();
+
+require_once 'classes/User.php';
+
+$user = new User();
+// Interface fluide : appels en chaîne
+$user
+  ->setFirstname("Belle")
+  ->setName("Fields")
+  ->setBirthDate(new DateTime("1995-05-05"));
+
+echo $user->getFullName();
+
+var_dump($user);

@@ -10,6 +10,11 @@ class Product
     private int $quantity;
     private bool $discount;
 
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+
     /**
      * Gives product's price including given taxes
      *

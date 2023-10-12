@@ -7,15 +7,17 @@
 require_once 'classes/Product.php';
 
 // $product est un objet : une instance de la classe Product
-$product = new Product();
-
+$product = new Product("Bouquin");
+$product
+  ->setDiscount(true)
+  ->setPriceVatFree(70);
 // Impossible d'accéder directement à des propriétés privées
 // $product->discount = true;
 // $product->name = "journey";
 // $product->priceVatFree = 31.68;
 
 // $otherProduct est UNE AUTRE instance de la classe Product
-$otherProduct = new Product();
+$otherProduct = new Product("Chaise");
 // ... Appel d'une fonction de calcul d'un prix...
 // Résultat de cette fonction : -50
 // Problème ?

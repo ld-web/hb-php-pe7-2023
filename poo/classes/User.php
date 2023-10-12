@@ -1,19 +1,42 @@
 <?php
 
+require_once __DIR__ . '/FormatMode.php';
+
 class User
 {
+    // Constantes
+
+
+    // Propriétés
     private string $name;
     private string $firstname;
     private bool $active;
     private DateTime $birthDate;
 
+    // Méthodes
+    public function __construct(
+        string $name,
+        string $firstname,
+        DateTime $birthDate,
+        bool $active = true
+    ) {
+        $this->name = $name;
+        $this->firstname = $firstname;
+        $this->birthDate = $birthDate;
+        $this->active = $active;
+    }
+
     /**
      * Returns User's full name
      *
+     * @param int $order Format order
      * @return string Format : "name firstname"
      */
-    public function getFullName(): string
+    public function getFullName(int $order = FormatMode::NAME_THEN_FIRSTNAME): string
     {
+        if ($order === FormatMode::FIRSTNAME_THEN_NAME) {
+            return $this->firstname . ' ' . $this->name;
+        }
         return $this->name . " " . $this->firstname;
     }
 

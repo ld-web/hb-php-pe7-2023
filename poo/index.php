@@ -30,14 +30,15 @@ var_dump($product);
 // echo $product->getName();
 
 require_once 'classes/User.php';
+require_once 'classes/FormatMode.php';
 
-$user = new User();
+$user = new User("Bobby", "Johnny", new DateTime());
 // Interface fluide : appels en chaîne
 $user
   ->setFirstname("Belle")
   ->setName("Fields")
   ->setBirthDate(new DateTime("1995-05-05"));
 
-echo $user->getFullName();
+echo $user->getFullName(FormatMode::FIRSTNAME_THEN_NAME);
 
 var_dump($user);

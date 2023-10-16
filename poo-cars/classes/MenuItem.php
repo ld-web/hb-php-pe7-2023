@@ -2,9 +2,12 @@
 
 class MenuItem
 {
-    // Constantes
+    // Constantes : statiques par défaut
     private const CSS_ACTIVE = "text-white bg-blue-700 md:bg-transparent md:text-blue-700";
     private const CSS_INACTIVE = "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700";
+
+    // Membre statique
+    public static int $count = 0;
 
     // Propriétés
     private string $url;
@@ -19,6 +22,7 @@ class MenuItem
         $this->url = $url;
         $this->label = $label;
         $this->active = str_contains($_SERVER['REQUEST_URI'], $url);
+        self::$count++; // compte le nombre d'instances de MenuItem
     }
 
     public function getCssClasses(): string

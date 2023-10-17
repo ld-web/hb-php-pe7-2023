@@ -2,17 +2,10 @@
 $pageTitle = "Nos services";
 require_once 'layout/header.php';
 require_once 'data/cars.php';
+require_once 'classes/CarSearch.php';
 
-if (isset($_GET['y'])) {
-    $year = intval($_GET['y']);
-
-    $results = array_filter($cars, fn (Car $car) => $year === $car->getYear());
-} else {
-    $results = $cars;
-}
-
-$years = array_unique(array_map(fn (Car $car): int => $car->getYear(), $cars));
-sort($years);
+$carSearch = new CarSearch($cars);
+$results = $carSearch->getResults();
 ?>
 
 <h1>Services</h1>
@@ -21,7 +14,7 @@ sort($years);
   <label for="underline_select" class="sr-only">Underline select</label>
   <select id="underline_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" name="y">
       <option value="0">Choisissez une année...</option>
-      <?php foreach ($years as $y) { ?>
+      <?php foreach ($carSearch->getYears() as $y) { ?>
       <option value="<?php echo $y; ?>" <?php echo (isset($_GET['y']) && intval($_GET['y']) === $y) ? "selected" : ""; ?>>
         <?php echo $y; ?>
       </option>

@@ -21,7 +21,12 @@ $otherProduct = new Product("Chaise");
 // ... Appel d'une fonction de calcul d'un prix...
 // Résultat de cette fonction : -50
 // Problème ?
-$otherProduct->setPriceVatFree(-50);
+try {
+    $otherProduct->setPriceVatFree(-50);
+} catch (InvalidArgumentException $e) {
+    echo $e->getMessage();
+}
+
 var_dump($otherProduct);
 
 // Accéder à la valeur qui se trouve dans la propriété discount de mon instance $product

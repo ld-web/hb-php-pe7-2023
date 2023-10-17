@@ -35,12 +35,20 @@ class Product
         return strtoupper($this->name);
     }
 
-    // Setter
+    /**
+     * Setter
+     *
+     * @param float $price
+     * @return void
+     * @throws InvalidArgumentException if price is negative
+     */
     public function setPriceVatFree(float $price): void
     {
-        if ($price >= 0) {
-            $this->priceVatFree = $price;
+        if ($price < 0) {
+            throw new InvalidArgumentException("Le prix ne peut être négatif");
         }
+
+        $this->priceVatFree = $price;
     }
 
     /**

@@ -177,11 +177,11 @@ Ajout d'une classe `User`
 
 Ajout d'un constructeur dans les classes `Product` et `User`, pour initialiser des propriétés dès la construction de l'objet.
 
-## Atelier Cars
+## Atelier Voitureland
 
 ### Démarrage, éléments de menu dynamiques
 
-Création d'une classe [`MenuItem`](poo-cars/classes/MenuItem.php)
+Création d'une classe [`MenuItem`](poo-cars/classes/MenuItem.php) pour gérer dynamiquement l'apparence des éléments de menu en fonction de la page sur laquelle on se trouve
 
 - 3 propriétés : `url`, `label` et `active`
 - À la construction, on ne passe en paramètre que l'url et le libellé
@@ -198,3 +198,41 @@ Création d'une classe [`MenuItem`](poo-cars/classes/MenuItem.php)
 > Le plus important à retenir, c'est que les membres statiques ne sont pas reliés à une **instance** de classe mais à **la classe** elle-même
 
 Une constante de classe est statique par défaut, pas besoin d'ajouter le mot-clé `static` devant.
+
+## Atelier Voitureland : filtre par année
+
+Dans la page [`services.php`](poo-cars/services.php), ajout d'un filtre sur l'année des voitures.
+
+Dans un premier temps, on réalise entièrement ce filtre dans la page des services.
+
+### Refactorisation POO
+
+Dans un second temps, on réalise une classe [`CarSearch`](poo-cars/classes/CarSearch.php) dans laquelle on prend en charge la recherche d'éléments.
+
+Ainsi, dans la page des services, on n'a plus qu'à instancier un objet `CarSearch`, qui va, à sa construction, automatiquement détecter la présence d'un paramètre `GET` pour l'année à filtrer.
+
+Ensuite, toujours depuis [`services.php`](poo-cars/services.php), on consomme une méthode `getResults` qui sera capable d'appliquer le filtre préalablement détecté, au moment de son appel. Si aucun filtre n'est appliqué, on renvoie la liste de toutes les voitures.
+
+## Exceptions
+
+[Introduction](https://github.com/ld-web/hb-php-pe7-2023/commit/ff77c91652f62996c4957c8c8b2913c63d393ac0) avec la classe `Product` dans laquelle on n'autorisait pas de prix négatif. À présent, on renvoie une exception au code appelant si le prix est négatif.
+
+Dans un code appelant, on peut alors préparer cette possible erreur en entourant le code concerné par un block `try...catch`.
+
+## MyCorp - POO
+
+[poo_atelier_mycorp](poo_atelier_mycorp/)
+
+Reprise de l'atelier MyCorp et refactorisation en POO.
+
+Dans un premier temps, on s'attaque à la newsletter : création de plusieurs classes permettant de gérer [un email](poo_atelier_mycorp/classes/Email.php), les [erreurs liées aux emails](poo_atelier_mycorp/classes/EmailError.php), mais aussi une [classe utilitaire](poo_atelier_mycorp/classes/Utils.php) dans laquelle on ne définit pour le moment qu'une méthode `redirect`.
+
+## Librairie - Books
+
+[poo-books](poo-books/)
+
+Petit exercice sur la création de classes [`Book`](poo-books/classes/Book.php) et [`Author`](poo-books/classes/Author.php).
+
+Dans la classe `Book`, on définit une propriété `$author` de type `Author` : nous n'avons pas que des propriétés de types simples au sein d'une classe, nous pouvons aussi composer nos classes avec d'autres classes.
+
+Enfin, pour affecter un auteur aléatoire à un livre, on définit une fonction `randomElement` dans un fichier de [fonctions sur les tableaux](poo-books/functions/array.php).

@@ -148,3 +148,53 @@ Définition de fonctions & constantes dans un fichier [functions/newsletter.php]
 Dans le même fichier, on continue notre décomposition avec 2 fonctions supplémentaires : `registerEmail` et `getTotalEmails`, chargées respectivement d'enregistrer un nouvel email au sein du fichier, et de compter le nombre d'emails présents dans le fichier.
 
 ![Newsletter form process](atelier_mycorp/docs/newsletter_form_process.png "Newsletter form process")
+
+## MyCorp : recherche de membres
+
+Réalisation d'un moteur de recherche de membres (par nom et prénom, donc nom complet).
+
+> Objectifs : formulaires, paramètres GET, création de fonctions, fonction anonyme, utilisation de fonctions de la SPL
+
+Création d'une [fonction de recherche](atelier_mycorp/functions/member.php) de membre, en utilisant des fonctions de la SPL.
+
+Dans le fichier [search.php](atelier_mycorp/search.php), extraction du paramètre GET de recherche issu du [formulaire](atelier_mycorp/layout/searchbar.php).
+
+Ensuite, ajout d'un filtre sur les compétences : dans la searchbar, ajout d'une liste déroulante `select` présentant l'ensemble des objets `Ability` enregistrés dans les données.
+
+Ajout d'un paramètre facultatif `$abilityId` à la fonction `findMembers` pour pouvoir chercher un membre par nom et par compétence.
+
+## Programmation orientée objet
+
+[Introduction](https://github.com/ld-web/hb-php-pe7-2023/commit/9cbea1b26ca00503d8f7b074802766cfc840b8cf) :
+
+- Création d'une classe simple `Product` : propriétés, méthodes, visibilité & encapsulation
+
+Ajout d'une classe `User`
+
+- Dans index.php, création d'instances de classes : après la définition de classes, on crée des objets de ces classes
+
+### Constructeur
+
+Ajout d'un constructeur dans les classes `Product` et `User`, pour initialiser des propriétés dès la construction de l'objet.
+
+## Atelier Cars
+
+### Démarrage, éléments de menu dynamiques
+
+Création d'une classe [`MenuItem`](poo-cars/classes/MenuItem.php)
+
+- 3 propriétés : `url`, `label` et `active`
+- À la construction, on ne passe en paramètre que l'url et le libellé
+- On déduit alors dynamiquement la valeur de `active` en regardant la page courante (superglobale `$_SERVER`)
+- On crée une méthode `getCssClasses` renvoyant des classes Tailwind CSS suivant l'état de l'élément (actif ou inactif)
+- Dans le layout ([`nav.php`](poo-cars/layout/nav.php)), on crée des instances de `MenuItem`, qu'on place dans un tableau
+- On boucle sur ces éléments pour les afficher un par un
+- On n'a pas à se préoccuper de leur apparence : l'appel à `getCssClasses` permet d'appliquer automatiquement un effet actif/inactif suivant la page où on se trouve
+
+## Membres statiques
+
+[Commit concerné](https://github.com/ld-web/hb-php-pe7-2023/commit/eef00d15132e1d0c144fdcdc44e1fb70730ba506)
+
+> Le plus important à retenir, c'est que les membres statiques ne sont pas reliés à une **instance** de classe mais à **la classe** elle-même
+
+Une constante de classe est statique par défaut, pas besoin d'ajouter le mot-clé `static` devant.

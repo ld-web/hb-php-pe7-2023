@@ -4,6 +4,7 @@ require_once 'functions.php';
 require_once 'functions/newsletter.php';
 require_once 'classes/Utils.php';
 require_once 'classes/Email.php';
+require_once 'classes/EmailsFile.php';
 
 // Return early pattern
 // Situation désirée : la clé email est définie dans le tableau $_POST
@@ -19,28 +20,10 @@ if (!isset($_POST['email'])) {
 // 1 - Initialisations de variables
 try {
     $email = new Email($_POST['email']);
+    $spamChecker = new SpamChecker();
+    $file  = new EmailsFile(__DIR__ . '/emails.txt', $spamChecker);
+    $file->add($email);
+    Utils::redirect('subscription_confirm.php?email=' . $email->getEmail());
 } catch (InvalidArgumentException $e) {
     Utils::redirect("newsletter.php?error=" . $e->getCode());
 }
-
-$email = $_POST['email'];
-$emailsFilePath = __DIR__ . '/emails.txt';
-$spamDomainsFilePath = __DIR__ . '/spam_domains.txt';
-
-// 2 - Validations
-
-// Éviter les doublons
-$emails = file($emailsFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-if (in_array($email, $emails)) {
-    Utils::redirect("newsletter.php?error=" . EMAIL_DUPLICATE . "&email=$email");
-}
-
-// Vérifier que le domaine n'est pas un spam
-$emailDomain = ltrim(strstr($email, '@'), '@');
-$spamDomains = file($spamDomainsFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-if (in_array($emailDomain, $spamDomains)) {
-    Utils::redirect("newsletter.php?error=" . EMAIL_SPAM . "&email=$email");
-}
-
-registerEmail($emailsFilePath, $email);
-Utils::redirect('subscription_confirm.php?email=' . $email);

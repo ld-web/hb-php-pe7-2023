@@ -3,7 +3,7 @@
 // Définition de la classe Product
 // Structure générale d'un produit
 
-class Product
+abstract class Product
 {
     protected string $name;
     protected float $priceVatFree;
@@ -14,6 +14,9 @@ class Product
     {
         $this->name = $name;
     }
+
+    // Force les enfants à fournir une définition de la méthode
+    abstract public function getSurface(): float;
 
     /**
      * Gives product's price including given taxes
@@ -32,7 +35,7 @@ class Product
 
     public function getName(): string
     {
-        return strtoupper($this->name);
+        return mb_strtoupper($this->name);
     }
 
     /**

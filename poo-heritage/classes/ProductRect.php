@@ -14,6 +14,11 @@ class ProductRect extends Product
         $this->height = $height;
     }
 
+    public function getSurface(): float
+    {
+        return $this->width * $this->height;
+    }
+
     public function getWidth(): int
     {
         return $this->width;

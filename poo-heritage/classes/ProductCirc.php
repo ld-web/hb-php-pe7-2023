@@ -12,6 +12,11 @@ class ProductCirc extends Product
         $this->diameter = $diameter;
     }
 
+    public function getSurface(): float
+    {
+        return M_PI * (($this->diameter / 2) ** 2);
+    }
+
     public function getDiameter(): int
     {
         return $this->diameter;

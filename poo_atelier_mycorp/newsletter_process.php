@@ -21,7 +21,10 @@ if (!isset($_POST['email'])) {
 try {
     $email = new Email($_POST['email']);
     $spamChecker = new SpamChecker();
-    $file  = new EmailsFile(__DIR__ . '/emails.txt', $spamChecker);
+    if ($spamChecker->isSpam($email)) {
+        throw new InvalidArgumentException(code: EmailError::SPAM);
+    }
+    $file  = new EmailsFile(__DIR__ . '/emails.txt');
     $file->add($email);
     Utils::redirect('subscription_confirm.php?email=' . $email->getEmail());
 } catch (InvalidArgumentException $e) {

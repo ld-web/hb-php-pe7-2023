@@ -10,7 +10,6 @@ class EmailsFile
 
     public function __construct(
         private string $emailsFilePath,
-        private SpamChecker $spamChecker
     ) {
         $this->emails = file($this->emailsFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     }
@@ -19,10 +18,6 @@ class EmailsFile
     {
         if (in_array($email->getEmail(), $this->emails)) {
             throw new InvalidArgumentException(code: EmailError::DUPLICATE);
-        }
-
-        if ($this->spamChecker->isSpam($email)) {
-            throw new InvalidArgumentException(code: EmailError::SPAM);
         }
 
         $emailsFile = fopen($this->emailsFilePath, 'a');

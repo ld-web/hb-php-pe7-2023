@@ -5,6 +5,8 @@ require_once 'functions/newsletter.php';
 require_once 'classes/Utils.php';
 require_once 'classes/Email.php';
 require_once 'classes/EmailsFile.php';
+require_once 'classes/Exception/EmptyEmailException.php';
+require_once 'classes/Exception/InvalidEmailException.php';
 
 // Return early pattern
 // Situation désirée : la clé email est définie dans le tableau $_POST
@@ -27,6 +29,9 @@ try {
     $file  = new EmailsFile(__DIR__ . '/emails.txt');
     $file->add($email);
     Utils::redirect('subscription_confirm.php?email=' . $email->getEmail());
+} catch (EmptyEmailException|InvalidEmailException $e) {
+    // Envoi email à l'administrateur, puis redirection
+    Utils::redirect("newsletter.php?error=" . $e->getCode());
 } catch (InvalidArgumentException $e) {
     Utils::redirect("newsletter.php?error=" . $e->getCode());
 }

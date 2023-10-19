@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/EmailError.php';
+require_once __DIR__ . '/Exception/EmptyEmailException.php';
+require_once __DIR__ . '/Exception/InvalidEmailException.php';
 
 class Email
 {
@@ -15,11 +17,11 @@ class Email
         $this->email = $email;
 
         if (empty($this->email)) {
-            throw new InvalidArgumentException(code: EmailError::EMPTY);
+            throw new EmptyEmailException();
         }
 
         if (!$this->isValid()) {
-            throw new InvalidArgumentException(code: EmailError::INVALID);
+            throw new InvalidEmailException();
         }
     }
 

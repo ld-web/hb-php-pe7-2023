@@ -3,8 +3,9 @@
 // Définition de la classe Product
 // Structure générale d'un produit
 
-abstract class Product
+abstract class Product implements IListItem
 {
+    protected int $id;
     protected string $name;
     protected float $priceVatFree;
     protected int $quantity;
@@ -17,6 +18,16 @@ abstract class Product
 
     // Force les enfants à fournir une définition de la méthode
     abstract public function getSurface(): float;
+
+    public function getValue(): string
+    {
+        return strval($this->id);
+    }
+
+    public function getLabel(): string
+    {
+        return $this->name;
+    }
 
     /**
      * Gives product's price including given taxes

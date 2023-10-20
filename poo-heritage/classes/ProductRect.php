@@ -7,9 +7,9 @@ class ProductRect extends Product
     private int $width;
     private int $height;
 
-    public function __construct(string $name, int $width, int $height)
+    public function __construct(int $id, string $name, int $width, int $height)
     {
-        parent::__construct($name);
+        parent::__construct($id, $name);
         $this->width = $width;
         $this->height = $height;
     }

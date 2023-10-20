@@ -6,9 +6,9 @@ class ProductCirc extends Product
 {
     private int $diameter;
 
-    public function __construct(string $name, int $diameter)
+    public function __construct(int $id, string $name, int $diameter)
     {
-        parent::__construct($name);
+        parent::__construct($id, $name);
         $this->diameter = $diameter;
     }
 

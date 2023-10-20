@@ -2,6 +2,7 @@
 
 // Définition de la classe Product
 // Structure générale d'un produit
+require_once __DIR__ . '/IListItem.php';
 
 abstract class Product implements IListItem
 {
@@ -11,8 +12,9 @@ abstract class Product implements IListItem
     protected int $quantity;
     protected bool $discount;
 
-    public function __construct(string $name)
+    public function __construct(int $id, string $name)
     {
+        $this->id = $id;
         $this->name = $name;
     }
 

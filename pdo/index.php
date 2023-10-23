@@ -2,7 +2,7 @@
 
 require_once 'functions/db.php';
 
-$pdo = getConnnection();
+$pdo = getConnection();
 
 var_dump($pdo);
 

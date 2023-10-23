@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Si je me trouve là, ça veut dire que la méthode employée est POST
 try {
-    $pdo = getConnnection();
+    $pdo = getConnection();
 
     $name = $_POST['name'];
     $firstname = $_POST['firstname'];

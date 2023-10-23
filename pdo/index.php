@@ -17,7 +17,7 @@ var_dump($pdo);
 $stmt = $pdo->query("SELECT * FROM users");
 
 if ($stmt === false) {
-    echo "Erreur lors de la connexion à la base de données";
+    echo "Erreur lors de la requête";
     exit;
 }
 

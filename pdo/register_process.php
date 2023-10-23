@@ -27,7 +27,8 @@ try {
     // --- INJECTION SQL POSSIBLE ---
 
     // 1 - Je prépare ma requête
-    $stmtInsert = $pdo->prepare("INSERT INTO users (`last_name`, `first_name`, `email`, `password`) VALUES (:nom, :firstname, :email, :hashedPassword)");
+    $query = "INSERT INTO users (`last_name`, `first_name`, `email`, `password`) VALUES (:nom, :firstname, :email, :hashedPassword)";
+    $stmtInsert = $pdo->prepare($query);
     // 2 - J'exécute mon statement préparé
     $stmtInsert->execute([
         'nom' => $name,

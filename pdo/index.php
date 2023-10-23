@@ -1,15 +1,8 @@
 <?php
 
-try {
-    $pdo = new PDO(
-        "mysql:host=172.18.0.1;port=3640;dbname=hb_pdo_pe7;charset=utf8mb4",
-        "hb_pdo_pe7",
-        "(OS(-HshCjYc_4zD"
-    );
-} catch (PDOException) {
-    echo "Erreur lors de la connexion à la base de données";
-    exit;
-}
+require_once 'functions/db.php';
+
+$pdo = getConnnection();
 
 var_dump($pdo);
 
@@ -26,7 +19,7 @@ if ($stmt === false) {
 // var_dump($users);
 
 // --- Lit les résultats un par un (curseur)
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+while ($row = $stmt->fetch()) {
     var_dump($row);
     echo $row['first_name'] . " " . $row['last_name'] . "<br />";
 }

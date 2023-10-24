@@ -1,5 +1,27 @@
 # Human Booster - PE7 - PHP
 
+## NPM
+
+Dans le dossier [poo-cars](poo-cars/) se trouve un fichier `package.json`, pour démontrer l'utilisation de TailwindCSS et Flowbite avec NPM.
+
+### Installation des dépendances
+
+Une fois la branche `checkout`, installer les dépendances NPM :
+
+```bash
+npm i
+```
+
+### Compilation des CSS
+
+Ensuite, pour "build" le fichier `dist/output.css`, lancer la commande suivante :
+
+```bash
+npm run watch
+```
+
+> ATTENTION : le fichier CSS à éditer est `assets/css/input.css`. Le fichier `dist/output.css` est généré automatiquement par Tailwind, il est donc inutile de le modifier manuellement, sinon, toute modification manuelle sera écrasée par la commande `watch`
+
 ## Introduction
 
 [intro](intro/index.php) :

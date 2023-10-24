@@ -1,5 +1,22 @@
 # Human Booster - PE7 - PHP
 
+## Configuration PDO
+
+Dossier : [pdo](pdo/)
+
+Copier et renommer le fichier `config/db.ini-template` en `config/db.ini`, puis configurer l'accès à la base de données.
+
+Ou bien, créer un fichier `config/db.ini` ayant la structure suivante :
+
+```ini
+DB_HOST="127.0.0.1"
+DB_PORT=3306
+DB_NAME="db_name"
+DB_CHARSET="utf8mb4"
+DB_USER="user"
+DB_PASSWORD="password"
+```
+
 ## Introduction
 
 [intro](intro/index.php) :

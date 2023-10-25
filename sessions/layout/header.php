@@ -3,6 +3,10 @@ session_start();
 if (!isset($_SESSION['theme'])) {
     $_SESSION['theme'] = 'light';
 }
+if (!isset($_SESSION['pagesVisited'])) {
+    $_SESSION['pagesVisited'] = 0;
+}
+$_SESSION['pagesVisited']++;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,4 +21,5 @@ if (!isset($_SESSION['theme'])) {
         <button type="submit">
             Changer le thème
         </button>
+        Pages visitées : <?php echo $_SESSION['pagesVisited']; ?>
     </form>

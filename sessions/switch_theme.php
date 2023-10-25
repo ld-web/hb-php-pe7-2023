@@ -6,5 +6,5 @@ session_start();
 $currentTheme = $_SESSION['theme'];
 $_SESSION['theme'] = ($currentTheme === 'dark') ? 'light' : 'dark';
 
-header('Location: index.php');
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit;

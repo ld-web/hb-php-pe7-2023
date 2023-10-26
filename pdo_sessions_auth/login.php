@@ -6,6 +6,13 @@
             <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
             Connexion
         </a>
+        <?php if (isset($_SESSION['loginErrorMessage'])) { ?>
+            <div class="p-4 bg-red-200 text-red-700">
+                <?php echo $_SESSION['loginErrorMessage']; ?>
+            </div>
+        <?php
+            unset($_SESSION["loginErrorMessage"]);
+        } ?>
         <div
             class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">

@@ -1,0 +1,21 @@
+{
+  "name": "ld-web/pe7-composer-intro",
+  "description": "Composer intro for HB students",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Lucas Delobelle",
+      "email": "lucas@ld-web.net"
+    }
+  ],
+  "scripts": {
+    "start": "php -S localhost:8000"
+  },
+  "config": {
+    "process-timeout": 0
+  },
+  "require": {
+    "symfony/mailer": "^6.3",
+    "symfony/dotenv": "^6.3"
+  }
+}

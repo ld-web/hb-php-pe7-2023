@@ -253,3 +253,7 @@ Petit exercice sur la création de classes [`Book`](poo-books/classes/Book.php) 
 Dans la classe `Book`, on définit une propriété `$author` de type `Author` : nous n'avons pas que des propriétés de types simples au sein d'une classe, nous pouvons aussi composer nos classes avec d'autres classes.
 
 Enfin, pour affecter un auteur aléatoire à un livre, on définit une fonction `randomElement` dans un fichier de [fonctions sur les tableaux](poo-books/functions/array.php).
+
+## POO - Introduction à l'héritage
+
+Dans [poo-heritage](poo-heritage/), création d'une classe `Product` avec 2 classes enfants `ProductRect` et `ProductCirc`
